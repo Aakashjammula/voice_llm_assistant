@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+pydantic
+langchain-google-genai
+python-dotenv
