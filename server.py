@@ -32,7 +32,6 @@ llm = ChatGoogleGenerativeAI(
     max_tokens=None,
     timeout=None,
     max_retries=2,
-    # other params...
 )
 class Query(BaseModel):
     query: str
@@ -40,9 +39,9 @@ class Query(BaseModel):
 @app.post("/query")
 async def process_query(query: Query) -> Dict[str, str]:
     messages = [
+        ("system", "You are a helpful and natural-sounding voice assistant. Respond in clear and conversational language without special characters or formatting. Keep responses concise, engaging, and easy to understand for text-to-speech conversion."),
         ("human", query.query),
     ]
-    
     response = ""
     for chunk in llm.stream(messages):
         response += str(chunk.content) 
