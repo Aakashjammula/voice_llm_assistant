@@ -23,8 +23,7 @@ Voice LLM Assistant is a voice-enabled chatbot that integrates with Google Gener
 
 ### Prerequisites
 - Python 3.9+
-- Node.js (Optional for frontend development)
-
+  
 ### Installation
 1. **Clone the repository:**
 ```bash
@@ -72,6 +71,4 @@ Feel free to fork this project and submit pull requests!
 ## 📄 License
 This project is licensed under the MIT License.
 
-## 📧 Contact
-For support or inquiries, contact [your-email@example.com].
 
