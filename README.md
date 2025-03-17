@@ -1,7 +1,7 @@
 # Voice LLM Assistant
 
 ## 📝 Description
-Voice LLM Assistant is a voice-enabled chatbot that integrates with Google Generative AI (Gemini 2.0 Pro) using FastAPI as the backend and a simple HTML/CSS/JavaScript frontend. It allows users to interact with an AI assistant using voice input and receive spoken responses, creating a seamless voice-based conversational experience.
+Voice LLM Assistant is a voice-enabled chatbot that integrates with Google Generative AI (Gemini 2.0 flash) using FastAPI as the backend and a simple HTML/CSS/JavaScript frontend. It allows users to interact with an AI assistant using voice input and receive spoken responses, creating a seamless voice-based conversational experience.
 
 ## 🚀 Features
 - 🎙️ **Voice Recognition:** Converts speech to text using browser-based Web Speech API.
@@ -14,7 +14,7 @@ Voice LLM Assistant is a voice-enabled chatbot that integrates with Google Gener
 ## 🛠️ Tech Stack
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap
 - **Backend:** FastAPI (Python)
-- **AI Model:** Gemini 2.0 Pro via LangChain
+- **AI Model:** Gemini 2.0 flash via LangChain
 
 ## 🚦 Getting Started
 
@@ -41,7 +41,11 @@ GOOGLE_API_KEY=your_google_genai_api_key
 
 4. **Run the server:**
 ```bash
-uvicorn server:app --host 0.0.0.0 --port 3000
+python -m uvicorn server:app --host 0.0.0.0 --port 3000
+```
+or
+```bash
+python server.py
 ```
 
 5. **Access the app:**
@@ -52,6 +56,8 @@ Open `http://localhost:3000` in your browser.
 2. Speak your query to the AI assistant.
 3. The AI will respond with both **text** and **speech**.
 4. Use **Clear** to reset the conversation.
+
+![ui](images/ui.png)
 
 
 ## 🤝 Contributing

@@ -6,15 +6,16 @@ from typing import Dict
 from dotenv import load_dotenv
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from fastapi import FastAPI, HTTPException
 
-
+load_dotenv()
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="."), name="static")
 
 @app.get("/")
 async def serve_index():
-    return FileResponse("index.html")
+    return FileResponse("./index.html")
 
 # Enable CORS
 app.add_middleware(
@@ -31,7 +32,6 @@ llm = ChatGoogleGenerativeAI(
     temperature=0,
     max_tokens=None,
     timeout=None,
-    max_retries=2,
 )
 class Query(BaseModel):
     query: str
@@ -43,8 +43,11 @@ async def process_query(query: Query) -> Dict[str, str]:
         ("human", query.query),
     ]
     response = ""
-    for chunk in llm.stream(messages):
-        response += str(chunk.content) 
+    try:
+        for chunk in llm.stream(messages):
+            response += str(chunk.content)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error processing query: {str(e)}")
     
     return {"response": response}
 
